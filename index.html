@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Game - Web Demo</title>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="score">
+        0
+    </div>
+
+    <div class="game">
+        <div class="start_menu">
+            Start Game
+        </div>
+
+        <div class="game_scene hide">
+            Main Scene
+        </div>
+    </div>
+
+    <script>
+        const score = document.querySelector('.score');
+        const startMenu = document.querySelector('.start_menu');
+        const gameScene = document.querySelector('.game_scene');
+
+        console.log(score);
+        console.log(startMenu);
+        console.log(gameScene);
+
+        startMenu.addEventListener("click", startGame);
+
+        function startGame() {
+            console.log("Start button clicked");
+        }
+    </script>
+</body>
+</html>
