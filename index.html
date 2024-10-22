@@ -34,14 +34,7 @@
         console.log(startMenu);
         console.log(gameScene);
 
-        // Start Menu
-        startMenu.addEventListener("click", startGame);
-
-        function startGame() {
-            console.log("Start button clicked");
-        }
-
-        // Key Press
+        let player = {};
         let keys = {
             ArrowUp: false,
             ArrowDown: false,
@@ -49,6 +42,23 @@
             ArrowLeft: false
         }
 
+        // Start Menu
+        startMenu.addEventListener("click", startGame);
+
+        function startGame() {
+            startMenu.classList.add("hide");
+            gameScene.classList.remove("hide");
+
+            player.start = true;
+            window.requestAnimationFrame(gameplayLoop);
+
+            let vehicle = document.createElement('div');
+            vehicle.innerText = "Vehicle";
+
+            gameScene.appendChild(vehicle);
+        }
+
+        // Key Press
         document.addEventListener("keydown", pressOn);
         document.addEventListener("keyup", pressOff);
 
@@ -62,6 +72,15 @@
             e.preventDefault();
             keys[e.key] = false;
             console.log(keys);
+        }
+
+        // Gameplay Loop
+        function gameplayLoop() {
+            console.log('Gameplay Loop');
+
+            if (player.start) {
+                window.requestAnimationFrame(gameplayLoop);
+            }
         }
     </script>
 </body>
