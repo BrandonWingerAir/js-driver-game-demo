@@ -8,6 +8,15 @@
         .hide {
             display: none;
         }
+
+        .vehicle {
+            position: absolute;
+            bottom: 100px;
+            left: 200px;
+            width: 50px;
+            height: 150px;
+            background-color: blue;
+        }
     </style>
 </head>
 <body>
@@ -25,63 +34,6 @@
         </div>
     </div>
 
-    <script>
-        const score = document.querySelector('.score');
-        const startMenu = document.querySelector('.start_menu');
-        const gameScene = document.querySelector('.game_scene');
-
-        console.log(score);
-        console.log(startMenu);
-        console.log(gameScene);
-
-        let player = {};
-        let keys = {
-            ArrowUp: false,
-            ArrowDown: false,
-            ArrowRight: false,
-            ArrowLeft: false
-        }
-
-        // Start Menu
-        startMenu.addEventListener("click", startGame);
-
-        function startGame() {
-            startMenu.classList.add("hide");
-            gameScene.classList.remove("hide");
-
-            player.start = true;
-            window.requestAnimationFrame(gameplayLoop);
-
-            let vehicle = document.createElement('div');
-            vehicle.innerText = "Vehicle";
-
-            gameScene.appendChild(vehicle);
-        }
-
-        // Key Press
-        document.addEventListener("keydown", pressOn);
-        document.addEventListener("keyup", pressOff);
-
-        function pressOn(e) {
-            e.preventDefault();
-            keys[e.key] = true;
-            console.log(keys);
-        }
-
-        function pressOff(e) {
-            e.preventDefault();
-            keys[e.key] = false;
-            console.log(keys);
-        }
-
-        // Gameplay Loop
-        function gameplayLoop() {
-            console.log('Gameplay Loop');
-
-            if (player.start) {
-                window.requestAnimationFrame(gameplayLoop);
-            }
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
