@@ -48,6 +48,18 @@ function startGame() {
     player.x = vehicle.offsetLeft;
     player.y = vehicle.offsetTop;
     // console.log(player);
+
+    for (let x = 0; x < 3; x++) {
+        let enemy = document.createElement('div');
+
+        enemy.classList.add("enemy");
+        enemy.y = ((x + 1) * 600) * -1;
+        enemy.style.top = enemy.y + "px";
+        enemy.style.left = Math.floor(Math.random() * 150) + "px";
+        enemy.style.backgroundColor = "red";
+
+        gameScene.appendChild(enemy);
+    }
 }
 
 // Road Lines
@@ -66,6 +78,23 @@ function moveLines() {
     });
 }
 
+// Move Enemies
+function moveEnemy() {
+    let enemies = document.querySelectorAll(".enemy");
+
+    enemies.forEach(function(line) {
+        console.log(line.y);
+
+        if (line.y > 1500) {
+            line.y -= 600;
+            item.style.left = Math.floor(Math.random() * 150) + "px";
+        }
+
+        line.y += player.speed;
+        line.style.top = line.y + "px";
+    });
+}
+
 // Gameplay Loop
 function gameplayLoop() {
     // console.log('Gameplay loop running');
@@ -75,6 +104,7 @@ function gameplayLoop() {
     // console.log(player.x);
     
     moveLines();
+    moveEnemy();
 
     if (player.start) {
         if (keys.ArrowUp && player.y > (road.top - 21)) { 
