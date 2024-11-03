@@ -26,10 +26,13 @@ function startGame() {
 
     player.start = true;
 
-    for (let x = 0; x < 6; x++) {
+    for (let x = 0; x < 10; x++) {
         let div = document.createElement('div');
+
         div.classList.add("line");
+        div.y = x * 150;
         div.style.top = (x * 150) + "px";
+
         gameScene.appendChild(div);
     }
 
@@ -47,6 +50,22 @@ function startGame() {
     // console.log(player);
 }
 
+// Road Lines
+function moveLines() {
+    let lines = document.querySelectorAll(".line");
+
+    lines.forEach(function(line) {
+        console.log(line.y);
+
+        if (line.y > 1500) {
+            line.y -= 1500;
+        }
+
+        line.y += player.speed;
+        line.style.top = line.y + "px";
+    });
+}
+
 // Gameplay Loop
 function gameplayLoop() {
     // console.log('Gameplay loop running');
@@ -54,6 +73,8 @@ function gameplayLoop() {
     let vehicle = document.querySelector(".vehicle");
     let road = gameScene.getBoundingClientRect();
     // console.log(player.x);
+    
+    moveLines();
 
     if (player.start) {
         if (keys.ArrowUp && player.y > (road.top - 21)) { 
