@@ -1,0 +1,35 @@
+:root {
+    --wrapper-padding: 23px;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+.game {
+    height: calc(100% - var(--wrapper-padding) * 2);
+    padding-bottom: var(--wrapper-padding);
+}
+
+.hide {
+    display: none;
+}
+
+.vehicle {
+    position: absolute;
+    bottom: 100px;
+    left: 200px;
+    width: 50px;
+    height: 150px;
+    background-color: blue;
+}
+
+.game_scene {
+    background: #000;
+    width: 300px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+}
