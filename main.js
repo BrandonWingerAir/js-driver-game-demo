@@ -25,6 +25,14 @@ function startGame() {
     gameScene.classList.remove("hide");
 
     player.start = true;
+
+    for (let x = 0; x < 6; x++) {
+        let div = document.createElement('div');
+        div.classList.add("line");
+        div.style.top = (x * 150) + "px";
+        gameScene.appendChild(div);
+    }
+
     window.requestAnimationFrame(gameplayLoop);
 
     let vehicle = document.createElement('div');
@@ -37,7 +45,6 @@ function startGame() {
     player.x = vehicle.offsetLeft;
     player.y = vehicle.offsetTop;
     // console.log(player);
-    
 }
 
 // Gameplay Loop
